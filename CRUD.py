@@ -18,17 +18,17 @@ def read_users():
     return cursor.fetchall()
 
 #Actualizar todos los datos
-def update_user(id, name, telefono, email, ciudad, direccion):
-    cursor.execute("UPDATE users SET telefono = ?, email = ?, ciudad = ?, direccion = ? WHERE id = ?", (name, telefono, email, ciudad, direccion, id))
+def update_user_data(id, telefono, email, ciudad, direccion):
+    cursor.execute("UPDATE users SET telefono = ?, email = ?, ciudad = ?, direccion = ? WHERE id = ?", ( telefono, email, ciudad, direccion, id))
     conn.commit()
 
 #Actualizar telefono
-def update_user(id, telefono):
+def update_user_telefono(id, telefono):
     cursor.execute("UPDATE users SET telefono = ? WHERE id = ?", (telefono, id))
     conn.commit()
 
 #Actualizar email
-def update_user(id, email):
+def update_user_email(id, email):
     cursor.execute("UPDATE users SET email = ? WHERE id = ?", (email, id))
     conn.commit()
 
@@ -59,6 +59,48 @@ create_user("Tatiana","3056594812", "tatiana@mail.com", "Giron", "Avenida 12 N 2
 create_user("Jennifer","3156497832", "jennifer@mail.com", "Bucaramanga", "Diagonal 15 N 15-43")
 """
 
-print(read_users())
+
+usuarios = read_users()
+
+for user in usuarios:
+    print(user)
+
+print("""
+      
+Inicio de programa
+      
+¿Qué desea realizar?
+      
+1. Modificar telefono de un usuario definido
+2. Modificar email de un usuario defindo
+3. Modificar todos los datos del usuario
+       
+""")
+
+accion = input("Ingrese la opción que desea realizar: ")
+
+opciones = ["1","2","3"]
+
+while accion not in opciones:
+    accion = input("Opcion incorrecta ingrese nuevamente la opción que desea realizar")
+
+if accion == "1":
+    id_usuario = input("Ingrese el id de usuario a modificar el telefono: ")
+    telefono_usuario = input("Ingrese el nuevo el telefono: ")
+    update_user_telefono(id_usuario,telefono_usuario)
+
+if accion == "2":
+    id_usuario = input("Ingrese el id de usuario a modificar el telefono: ")
+    email_usuario = input("Ingrese el nuevo el email: ")
+    update_user_email(id_usuario,email_usuario)
+
+if accion == "3":
+    id_usuario = input("Ingrese el id del usuario: ")
+    telefono_usuario = input("Ingrese el nuevo el telefono: ")
+    email_usuario = input("Ingrese el nuevo email: ")
+    ciudad_usuario = input("Ingrese la nueva dirección: ")
+    direccion_usuario = input("Ingrese la nueva dirección: ")
+    update_user_data(id_usuario,telefono_usuario, email_usuario, ciudad_usuario, direccion_usuario) 
+    
 
 conn.close()
