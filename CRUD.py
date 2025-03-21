@@ -98,7 +98,7 @@ if accion == "3":
     id_usuario = input("Ingrese el id del usuario: ")
     telefono_usuario = input("Ingrese el nuevo el telefono: ")
     email_usuario = input("Ingrese el nuevo email: ")
-    ciudad_usuario = input("Ingrese la nueva dirección: ")
+    ciudad_usuario = input("Ingrese la nueva ciudad: ")
     direccion_usuario = input("Ingrese la nueva dirección: ")
     update_user_data(id_usuario,telefono_usuario, email_usuario, ciudad_usuario, direccion_usuario) 
     
