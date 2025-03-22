@@ -60,10 +60,10 @@ create_user("Jennifer","3156497832", "jennifer@mail.com", "Bucaramanga", "Diagon
 """
 
 
-usuarios = read_users()
+#usuarios = read_users()
 
-for user in usuarios:
-    print(user)
+#for user in usuarios:
+#    print(user)
 
 print("""
       
@@ -74,12 +74,15 @@ Inicio de programa
 1. Modificar telefono de un usuario definido
 2. Modificar email de un usuario defindo
 3. Modificar todos los datos del usuario
+4. Crear usuario
+5. Ver usuarios
+6. Eliminar usuario
        
 """)
 
 accion = input("Ingrese la opción que desea realizar: ")
 
-opciones = ["1","2","3"]
+opciones = ["1","2","3","4","5","6"]
 
 while accion not in opciones:
     accion = input("Opcion incorrecta ingrese nuevamente la opción que desea realizar")
@@ -101,6 +104,22 @@ if accion == "3":
     ciudad_usuario = input("Ingrese la nueva ciudad: ")
     direccion_usuario = input("Ingrese la nueva dirección: ")
     update_user_data(id_usuario,telefono_usuario, email_usuario, ciudad_usuario, direccion_usuario) 
-    
 
+if accion == "4":
+    name_usuario = input("Ingrese el nombre del nuevo del usuario: ")
+    telefono_usuario = input("Ingrese el telefono del usuario: ")
+    email_usuario = input("Ingrese el email del usuario: ")
+    ciudad_usuario = input("Ingrese la ciudad del usuario: ")
+    direccion_usuario = input("Ingrese la direccion del usuario: ")
+    create_user(name_usuario, telefono_usuario, email_usuario, ciudad_usuario, direccion_usuario)
+
+if accion == "5":
+    usuarios = read_users()
+    for user in usuarios:
+        print(user)
+
+if accion == "6":
+    id_user = input("Ingrese el id del usuario que desea eliminar")
+    delete_user(id)
+    
 conn.close()
