@@ -120,6 +120,6 @@ if accion == "5":
 
 if accion == "6":
     id_user = input("Ingrese el id del usuario que desea eliminar")
-    delete_user(id)
+    delete_user(id_user)
     
 conn.close()
